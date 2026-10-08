@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart College Timetable Generator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Smart College Timetable Generator</h1>
+  <p>Greedy &amp; Backtracking &middot; Divisions &amp; Batches</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>1. Divisions &amp; Batches</h2>
+    <div class="row">
+      <input id="divName" placeholder="Division name (e.g. C)">
+      <button onclick="addDivision()">Add Division</button>
+    </div>
+    <div id="divList"></div>
+  </section>
+
+  <section class="card">
+    <h2>2. Subjects</h2>
+    <div class="row">
+      <input id="sCode" placeholder="Code" size="8">
+      <input id="sName" placeholder="Subject name">
+      <input id="sFaculty" placeholder="Faculty">
+      <label>Lectures/week <input id="sLec" type="number" min="0" value="3"></label>
+      <label>Lab sessions/week <input id="sLab" type="number" min="0" value="0"></label>
+      <label>Colour <input id="sColor" type="color" value="#4caf50"></label>
+      <button onclick="addSubject()">Add Subject</button>
+    </div>
+    <p class="hint">Type is automatic: lecture hours only = Lecture, both = Lecture + Lab. Each lab session is 2 hours and uses lab rooms. Enter 2 to get two lab sessions of that subject per week.</p>
+    <div id="subjList"></div>
+  </section>
+
+  <section class="card">
+    <h2>3. Rooms</h2>
+    <div class="row">
+      <label>Lecture rooms (comma separated) <input id="lecRooms" value="Room 101, Room 102" size="30"></label>
+      <label>Lab rooms (comma separated) <input id="labRooms" value="Lab 1, Lab 2, Lab 3, Lab 4" size="30"></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>4. Generate</h2>
+    <div class="row">
+      <select id="algo">
+        <option value="greedy">Greedy Algorithm</option>
+        <option value="backtracking">Backtracking Algorithm</option>
+      </select>
+      <button onclick="generate()">Generate Timetable</button>
+      <button class="secondary" onclick="window.print()">Print</button>
+    </div>
+    <div id="messages"></div>
+  </section>
+
+  <section class="card" id="resultCard" hidden>
+    <h2>Division Timetables</h2>
+    <div id="legend"></div>
+    <div id="divTables"></div>
+    <h2>Detailed List (all divisions)</h2>
+    <div class="scroll"><table id="timetable"></table></div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
